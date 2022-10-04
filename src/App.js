@@ -1,11 +1,21 @@
 import './App.scss';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/navbar';
+import Home from './pages/home/view';
+import EpisodeDetails from './pages/episode-detail/view';
+import PodcastDetails from './pages/podcast-details/view';
 
-function App() {
+const App = () =>{
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>example</h1>
-      </header>
+      <Navbar />
+      <Router>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="podcast/:podcastId" element={<PodcastDetails />} />
+                <Route path="podcast/:podcastId/episode/:episodeId" element={<EpisodeDetails />} />
+              </Routes>
+      </Router>
     </div>
   );
 }

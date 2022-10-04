@@ -1,4 +1,3 @@
-import './home.scss';
 import React from 'react';
 import getHomeHOC from './view-hoc';
 
