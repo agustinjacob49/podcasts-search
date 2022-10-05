@@ -2,7 +2,7 @@ import './loader.scss';
 import React from 'react';
 
 const Loader = () => (
-   <div class="loader" />
+   <div className="loader" />
 );
 
 export default Loader;

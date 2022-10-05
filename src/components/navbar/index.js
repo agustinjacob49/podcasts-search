@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import LoaderContext from '../../utils/context/loaderContext';
 import Loader from '../loader';
 
-const Navbar = ({ isLoading = true }) => {
+const Navbar = () => {
+
+    const isLoading = useContext(LoaderContext);
+
     return (
         <header>
             <nav className='navbar'>
