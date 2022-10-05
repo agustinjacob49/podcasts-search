@@ -6,22 +6,23 @@ import { fetchPodcast } from '../../utils/api/fetch';
 const getPodcastDetailsHOC = View => {
     
     const podcastDetailsHOC = ({loadingCallback}) => {
-        const [podcastData, setPodcastData] = useState(null);
+        const [podcast, setPodcast] = useState(null);
         const { podcastId } = useParams();
 
         useEffect(() => {
-            fetchPodcast(podcastId).then((podcastData) => {
-                setPodcastData({ podcastData }); 
+            loadingCallback(true);
+            fetchPodcast(podcastId).then((podcast) => {
+                setPodcast({ podcast }); 
                 loadingCallback(false);
               });
           }, []);
 
         const props = {
-            ...podcastData
+            ...podcast
         }
        
         return (
-            <View {...props} />
+            podcast && <View {...props} />
         );
     }
 

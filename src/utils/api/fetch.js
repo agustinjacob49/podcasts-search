@@ -1,33 +1,20 @@
 import { transformPodcasts } from "../transform/podcasts";
+import { saveLocalStoragePodcastsData, getLocalStoragePodcastsData, saveLocalStoragePodcastData, searchLocalStoragePodcastsDetailData } from "../localStorage/podcast";
+import { XMLParser } from 'fast-xml-parser';
 
 export const fetchPodcasts = () => {
     try {
-        let isExpiredDate = false;
-        let isDataNotFound = false;
-        const keyStoragePodcasts = 'podcast';
-        const keyStoragePodcastsExpireDate = 'podcast_expire_date';
-
-        const storagePodcastsExpireDate = localStorage.getItem(keyStoragePodcastsExpireDate);
-        const actualDate = new Date();
-
-        if(storagePodcastsExpireDate !== null){
-            const expireDate = new Date(parseInt(storagePodcastsExpireDate, 0));
-            isExpiredDate = actualDate > expireDate ? true : false;
-        }
-
-        const storagedPodcasts = localStorage.getItem(keyStoragePodcasts);
-
-        isDataNotFound = storagedPodcasts === null ? true : false;
-
-        if (isExpiredDate || isDataNotFound) {
+    
+        const { isNotValid, storagedPodcasts} = getLocalStoragePodcastsData();
+    
+        if (isNotValid) {
             return fetch("https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json")
             .then((response) => response.json())
             .then((response) => {
-                localStorage.setItem(keyStoragePodcastsExpireDate, JSON.stringify(new Date().setDate(actualDate.getDate() + 1)));
-
                 const { feed : { entry } } = response;
                 const podcasts = transformPodcasts(entry);
-                localStorage.setItem(keyStoragePodcasts, JSON.stringify(podcasts));
+
+                saveLocalStoragePodcastsData(podcasts);
                 return podcasts;
             });
         } else {
@@ -42,16 +29,51 @@ export const fetchPodcasts = () => {
 
 };
 
-export const fetchPodcast = (podcastId) => {
-    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+export const fetchPodcast = async (podcastId) => {
 
-    return fetch(`${corsProxy}https://itunes.apple.com/lookup?id=${podcastId}`)
-            .then((response) => response.json())
-            .then((response) => {
-                return response;
-            })
-            .catch( (err) => {
-                console.log(`Error fetching podcast details - original msg:${err}`);
-            });
+   const cachedData = searchLocalStoragePodcastsDetailData(podcastId);
+
+   if (cachedData) {
+        return Promise.resolve(cachedData);
+   } else {
+        const corsProxy = 'https://api.allorigins.win/get?url=';
+
+        const responseItunes = await fetch(`${corsProxy}${encodeURIComponent(`https://itunes.apple.com/lookup?id=${podcastId}`)}`).then((response) => response.json());
+
+        const { results } = JSON.parse(responseItunes.contents);
+        const [ podcast ] = results;
+
+        const { feedUrl } = podcast;
+
+
+        const parser = new XMLParser();
+        
+        const responseRSS = await fetch(`${corsProxy}${feedUrl}`).then((response) => response.text()).then((response) => parser.parse(response));
+
+        const { rss : { channel: rss } } = responseRSS
+
+        const podcastData = {
+            podcastData: podcast,
+            rss,
+        }
+
+        const {podcastData : { artistName : author, collectionName: title, collectionId: id }} = podcastData;
+        let { podcastData : { artworkUrl600 : img} } = podcastData;
+        img = img.replace("600x600", "250x250");
+
+        const details = rss['description'] || rss["itunes:summary"];
+
+        const podcastViewData = {
+            id,
+            author,
+            title,
+            details,
+            img
+        };
+
+        saveLocalStoragePodcastData(podcastViewData);
+
+        return Promise.resolve(podcastViewData);
+   }
 }
 
