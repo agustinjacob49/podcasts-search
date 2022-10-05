@@ -3,12 +3,12 @@ import getHomeHOC from './view-hoc';
 import Filters from '../../components/filters';
 import Podcasts from '../../components/grid';
 
-const View = () => {
+const View = ({ podcasts }) => {
 
     return (
         <div>
             <Filters />
-            <Podcasts />
+            <Podcasts podcasts={podcasts}/>
         </div>
     );
 };

@@ -2,31 +2,12 @@ import './grid.scss';
 import React from 'react';
 import Item from './item';
 
-const itemsList = [
-    {
-        title: "All songs considered",
-        author: "Tiesto"
-    },
-    {
-        title: "All songs",
-        author: "D"
-    },
-    {
-        title: "Considered",
-        author: "KI"
-    },
-    {
-        title: "Maga",
-        author: "Kul"
-    }
-];
-
-const Grid = () => {
+const Grid = ({ podcasts }) => {
 
     return (
         <section className='grid'>
             <div className='grid__block'>
-            { itemsList.map( p => ( <Item title={p.title} author={p.author}/>))}
+            { podcasts && podcasts.map( p => ( <Item title={p.title} author={p.author} id={p.id} cover={p.cover}/>))}
             </div>
         </section>
     );

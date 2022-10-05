@@ -1,5 +1,9 @@
+.link{
+    text-decoration: none;
+}
+
 .grid {
-    margin: 0 120px 0 120px;
+    margin: 0 120px 120px 120px;
 }
 
 .grid__block {
@@ -30,11 +34,22 @@
 
 .grid__item__card__title{
     margin: 0;
-    font-weight: 600
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 35px;
+    color:black;
 }
 
 .grid__item__card__subtitle{
     color: grey;
     margin-top: 8px;
     margin-bottom: 16px;
+    font-size: 12px;
+}
+
+.grid__item__img{
+    position:relative;
+    top:32px;
+    border-radius: 50%;
 }
