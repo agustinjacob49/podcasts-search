@@ -1,0 +1,40 @@
+.grid {
+    margin: 0 120px 0 120px;
+}
+
+.grid__block {
+    margin-top: 16px;
+    gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.grid__item__card {
+    display: flex;
+    -webkit-box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 2px 3px 2px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 3px 2px rgba(0, 0, 0, 0.2);
+    width: 176px;
+    height: 128px;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid__item__card__info {
+    align-self: flex-end;
+    text-align: center;
+}
+
+.grid__item__card__title{
+    margin: 0;
+    font-weight: 600
+}
+
+.grid__item__card__subtitle{
+    color: grey;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}

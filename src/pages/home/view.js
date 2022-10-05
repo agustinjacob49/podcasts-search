@@ -1,11 +1,14 @@
 import React from 'react';
 import getHomeHOC from './view-hoc';
+import Filters from '../../components/filters';
+import Podcasts from '../../components/grid';
 
 const View = () => {
 
     return (
         <div>
-            <h1>Home</h1>
+            <Filters />
+            <Podcasts />
         </div>
     );
 };

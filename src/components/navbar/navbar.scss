@@ -1,4 +1,5 @@
 .navbar{
+    display: flex;
     z-index: 1;
     border-bottom: 1px solid #d4d1cb;
     padding-bottom: 16px;
@@ -11,4 +12,8 @@
     line-height: 25px;
     color: #3972a6;
     text-decoration: none;
+}
+
+.navbar__loader {
+  margin-left: auto;
 }
