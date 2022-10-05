@@ -36,8 +36,22 @@ export const fetchPodcasts = () => {
             });
         }
     } catch (err) {
+        console.log(`Error fetching podcast list - original msg:${err}`);
         return new Promise().reject(err);
     }
 
+};
+
+export const fetchPodcast = (podcastId) => {
+    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+
+    return fetch(`${corsProxy}https://itunes.apple.com/lookup?id=${podcastId}`)
+            .then((response) => response.json())
+            .then((response) => {
+                return response;
+            })
+            .catch( (err) => {
+                console.log(`Error fetching podcast details - original msg:${err}`);
+            });
 }
 
