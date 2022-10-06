@@ -61,6 +61,36 @@ export const fetchPodcast = async (podcastId) => {
     let { podcastData : { artworkUrl600 : img} } = podcastData;
     img = img.replace("600x600", "250x250");
 
+    const episodes = rss.item.map( (i) => {
+        const episodeTitle = i["itunes:title"] || i["title"];
+        const date = i["pubDate"] && new Date(i["pubDate"]).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+        });
+
+        const durationRaw = i["itunes:duration"] || 0 ;
+        const src = i['enclosure']?
+        i['enclosure']['url'] :
+        (i['media:content']?
+        i['media:content']['url'] :
+          null
+        );
+
+
+        let durationParsed = new Date(0);
+        durationParsed.setSeconds(durationRaw);
+        durationParsed = durationParsed.toISOString().substring(11, 19);
+
+        return {
+            episodeTitle,
+            date,
+            duration: durationParsed,
+            src
+        }
+    })
+    
+
     const details = rss['description'] || rss["itunes:summary"];
 
     const podcastViewData = {
@@ -68,7 +98,8 @@ export const fetchPodcast = async (podcastId) => {
         author,
         title,
         details,
-        img
+        img,
+        episodes
     };
 
     saveLocalStoragePodcastData(podcastViewData);
