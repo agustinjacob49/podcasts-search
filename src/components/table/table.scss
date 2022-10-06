@@ -1,0 +1,18 @@
+.podcast-details__episodes__card_container__table {
+    width: 100%;
+}
+
+.table__row{
+    height: 64px;
+}
+
+.table__episode__title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 35px;
+    text-align: inherit;
+}
+
+.table__episode__time {
+    text-align: center;
+}

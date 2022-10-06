@@ -19,7 +19,7 @@ const App = () => {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home loadingCallback={setIsLoading}/>} />
-              <Route path="podcast/:podcastId" element={<PodcastDetails />} />
+              <Route path="podcast/:podcastId" element={<PodcastDetails loadingCallback={setIsLoading}/>} />
               <Route
                 path="podcast/:podcastId/episode/:episodeId"
                 element={<EpisodeDetails />}
