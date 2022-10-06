@@ -10,7 +10,7 @@ export const getLocalStoragePodcastsData = () => {
     const storagePodcastsExpireDate = localStorage.getItem(KEY_STORAGE_PODCAST_EXPIRE_DATE);
     const actualDate = new Date();
 
-    if(storagePodcastsExpireDate !== null){
+    if(!!storagePodcastsExpireDate){
         const expireDate = new Date(parseInt(storagePodcastsExpireDate, 0));
         isExpiredDate = actualDate > expireDate ? true : false;
     } else {
@@ -19,13 +19,14 @@ export const getLocalStoragePodcastsData = () => {
 
     const storagedPodcasts = localStorage.getItem(KEY_STORAGE_PODCAST);
 
-    isDataNotFound = storagedPodcasts === null ? true : false;
+    isDataNotFound = !!storagedPodcasts ? false : true;
 
+    const isNotValid = isExpiredDate || isDataNotFound ? true : false;
 
     return {
         storagePodcastsExpireDate,
         storagedPodcasts,
-        isNotValid: isExpiredDate || isDataNotFound ? true : false,
+        isNotValid,
     }
 }
 
@@ -45,35 +46,45 @@ export const searchLocalStoragePodcastsDetailData = (podcastId) => {
 
     const storagedPodcasts = localStorage.getItem(KEY_STORAGE_PODCASTS_DETAIL);
 
-    const data = JSON.parse(storagedPodcasts)[0][podcastId];
-    const { expireDate } = data || {};
+    const parsedData = JSON.parse(storagedPodcasts);
+
+    const data = parsedData && parsedData[0];
+    const podcast = data && data[podcastId];
+
+    const { expireDate } = podcast || {};
 
     const actualDate = new Date();
 
-    if(expireDate !== null){
+    if(!!expireDate){
         const expireDateParsed = new Date(parseInt(expireDate, 0));
         isExpiredDate = actualDate > expireDateParsed ? true : false;
     } else {
         isExpiredDate = true;
     }
 
-    isDataNotFound = data === null ? true : false;
+    isDataNotFound = !!podcast ? false : true;
+
+    const isInvalid = isExpiredDate || isDataNotFound ? true : false;
 
     return {
-        ...data,
-        isNotValid: isExpiredDate || isDataNotFound ? true : false,
+        ...podcast,
+        isInvalid,
     }
 }
 
 export const saveLocalStoragePodcastData = (podcast) => {
 
     const storagedPodcasts = localStorage.getItem(KEY_STORAGE_PODCASTS_DETAIL);
+
+    const parsedData = JSON.parse(storagedPodcasts);
+    const podcasts = parsedData && parsedData[0];
+
     const { id } = podcast;
 
     const actualDate = new Date();
 
     const dataToStorage = {
-        ...storagedPodcasts,
+        ...podcasts,
     }
 
     dataToStorage[id] = {
