@@ -69,7 +69,30 @@ export const fetchPodcast = async (podcastId) => {
             day: '2-digit',
         });
 
-        const durationRaw = i["itunes:duration"] || 0 ;
+        let { description = "" } = i;
+
+        try {
+            description = description.replace(/(\\\r\\\n|\\n|\\r)/gm,"");
+            description = description.replace('\'', '');
+            description = decodeURI(description);
+        }catch (err){
+            console.log(description);
+            console.log(err);
+        }
+       
+
+        const durationRaw = i["itunes:duration"] || null ;
+        let durationParsed = new Date(0);
+        if (durationRaw){
+            if (typeof(durationRaw) === 'string' && durationRaw.includes(":")){
+                durationParsed = durationRaw
+            } else {
+                durationParsed.setSeconds(durationRaw);
+                durationParsed = durationParsed.toISOString().substring(11, 19);
+            }
+        } else {
+            durationParsed = durationRaw || 0;
+        }
         const src = i['enclosure']?
         i['enclosure']['url'] :
         (i['media:content']?
@@ -77,21 +100,26 @@ export const fetchPodcast = async (podcastId) => {
           null
         );
 
-
-        let durationParsed = new Date(0);
-        durationParsed.setSeconds(durationRaw);
-        durationParsed = durationParsed.toISOString().substring(11, 19);
-
         return {
             episodeTitle,
             date,
             duration: durationParsed,
-            src
+            src,
+            description,
         }
     })
     
 
-    const details = rss['description'] || rss["itunes:summary"];
+    let details = rss['description'] || rss["itunes:summary"];
+
+    try {
+        details = details.replace(/(\\\r\\\n|\\n|\\r)/gm,"");
+        details = details.replace('\'', '');
+        details = decodeURI(details);
+    }catch (err){
+        console.log(details);
+        console.log(err);
+    }
 
     const podcastViewData = {
         id,
