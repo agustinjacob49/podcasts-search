@@ -19,7 +19,9 @@ const getEpisodeDetailsHOC = View => {
                 setEpisode({ ...episode }); 
                 setPodcast({ id, author, title, details, img  });
                 loadingCallback(false);
-              });
+              }).catch( (err) => {
+                console.log(`Something went wrong at EpisodeDetailsHOC - ${err}`);
+              })
           }, []);
 
         const props = {
