@@ -7,7 +7,7 @@ const GridItem = ({title, author, cover, id}) => {
 
     return (
         <Link to={`/podcast/${id}`} className="link">
-            <div className='grid__item'>
+            <div className='grid__item' data-testid="item-card">
                     <Image src={cover} alt="cover" className="grid__item__img"/>
                     <div className='grid__item__card'>
                         <div className='grid__item__card__info'>

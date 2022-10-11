@@ -16,8 +16,8 @@ const getHomeHOC = View => {
         };
 
         useEffect(() => {
-            fetchPodcasts().then((podcasts) => {
-                setPodcastsData([...podcasts]); 
+            fetchPodcasts().then((response) => {
+                setPodcastsData([...response]); 
                 loadingCallback(false);
               }).catch( (err) => {
                 console.log(`Something went wrong at HomeHOC - ${err}`);

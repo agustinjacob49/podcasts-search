@@ -26,7 +26,9 @@ export const fetchPodcasts = () => {
         }
     } catch (err) {
         console.log(`Error fetching podcast list - original msg:${err}`);
-        return new Promise().reject(err);
+        return new Promise((resolve, reject) => {
+            reject(err);
+        })  
     }
 };
 
