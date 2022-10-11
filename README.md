@@ -19,6 +19,10 @@ All of the components are created from zero, whitout ui-libraries.
 For routing we use react-router-dom .\
 And for parsing xml-js
 
+
+Production instance powered by EC2 in AWS 
+![image](https://user-images.githubusercontent.com/46901057/195198874-77deb78d-d974-4a8c-a8f3-a412f80e3e56.png)
+
 ## Lighthouse score
 
 <img src="https://user-images.githubusercontent.com/46901057/195196723-e143d8de-5655-4e1d-aeec-ff7992491232.jpeg"/>
@@ -59,7 +63,7 @@ If you click on the navbar logo, you will go back to the home page.
 
 ## How to test in prod
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [this link](http://ec2-18-231-57-104.sa-east-1.compute.amazonaws.com:3000/) to view it in your browser.
 
 ## How to run locally
 
