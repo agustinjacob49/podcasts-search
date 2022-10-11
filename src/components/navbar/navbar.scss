@@ -1,0 +1,19 @@
+.navbar{
+    display: flex;
+    z-index: 1;
+    border-bottom: 1px solid #d4d1cb;
+    padding-bottom: 16px;
+}
+
+.navbar__title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 25px;
+    color: #3972a6;
+    text-decoration: none;
+}
+
+.navbar__loader {
+  margin-left: auto;
+}
