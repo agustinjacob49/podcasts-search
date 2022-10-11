@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 const showLoader = (className) => {
     return (
@@ -18,9 +18,10 @@ const Image = ({ src, className }) => {
             alt="cover"
             className={className}
             src={src}
-            onLoad={() => setLoading(false)} />
+            onLoad={() => setLoading(false)}
+          /> 
       </div>
     </>;
 };
 
-export default Image;
+export default memo(Image);

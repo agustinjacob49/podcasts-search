@@ -1,5 +1,5 @@
 import './grid.scss';
-import React from 'react';
+import React, { memo } from 'react';
 import Item from './item';
 
 const Grid = ({ podcasts }) => {
@@ -13,4 +13,4 @@ const Grid = ({ podcasts }) => {
     );
 };
 
-export default Grid;
+export default memo(Grid);
