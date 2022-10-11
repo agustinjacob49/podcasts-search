@@ -10,8 +10,8 @@ const Navbar = () => {
     return (
         <header>
             <nav className='navbar'>
-               <Link className="navbar__title" to='/'> Podcaster</Link>
-                { isLoading && <div className='navbar__loader'> <Loader /> </div>}
+               <Link className="navbar__title" to='/' data-testid="podcaster"> Podcaster</Link>
+                { isLoading && <div className='navbar__loader' data-testid="loader"> <Loader /> </div>}
             </nav>
         </header>
     );

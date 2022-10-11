@@ -17,7 +17,9 @@
     "start": "node index",
     "start-dev": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "test:coverage": "react-app-rewired test --coverage -u --watchAll=false",
     "test": "react-app-rewired test",
+    "test:update-mocks": "react-app-rewired test -u",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -61,6 +63,17 @@
     "resetMocks": false,
     "setupFiles": [
       "./src/setupTests.js"
+    ],
+    "coverageReporters": [
+      "json",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "./src/components/*.js",
+      "./src/pages/*.js",
+      "./src/utils/*.js",
+      "./!src/utils/context/*.js",
+      "./!src/utils/context/*.js"
     ]
   }
 }
