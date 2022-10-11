@@ -3,7 +3,7 @@
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import { BrowserRouter as Router } from "react-router-dom";
-import View from "./../../pages/home/view";
+import View from "../../../pages/home/view";
 import * as router from 'react-router'
 
 const navigate = jest.fn();
@@ -311,6 +311,11 @@ describe("Home view", () => {
 
   beforeEach(() => {
     fetch.resetMocks();
+  });
+
+  afterAll( () => {
+    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 
   test("Snapshot testing", async () => {

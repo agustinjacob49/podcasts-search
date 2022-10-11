@@ -12,6 +12,7 @@ const generateEpisodes = (episodes, handleOnClick) => {
         isGrey = !isGrey;
         return (
                 <tr 
+                    data-testid="episode"
                     onClick={() => { handleOnClick(index)}} 
                     className="table__row" 
                     key={`${index}-${episodeTitle}`}

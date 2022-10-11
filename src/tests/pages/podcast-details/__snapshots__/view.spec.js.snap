@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Podcast detail view Snapshot testing 1`] = `
+<div>
+  <div
+    class="podcast-details"
+  >
+    <aside
+      class="podcast-details__aside"
+    >
+      <div
+        class="podcast-details__aside__card"
+      >
+        <div
+          class="podcast-details__aside__card__container_img"
+        >
+          <a
+            class="link"
+            href="/podcast/1286770630"
+          >
+             
+            <div
+              style="display: block;"
+            >
+              <div
+                class="podcast-details__aside__card__img skeleton"
+              />
+            </div>
+            <div
+              data-testid="img"
+              style="display: none;"
+            >
+              <img
+                alt="cover"
+                class="podcast-details__aside__card__img"
+                src="https://is4-ssl.mzstatic.com/image/thumb/Podcasts115/v4/28/ae/ba/28aebaef-86c3-62e1-00b8-6bde0beaa85e/mza_13363439944907994191.png/250x250bb.jpg"
+              />
+            </div>
+             
+          </a>
+        </div>
+        <hr />
+        <div
+          class="podcast-details__aside__card__titles"
+        >
+          <a
+            class="link"
+            href="/podcast/1286770630"
+          >
+            <h1
+              class="podcast-details__aside__card__titles_content"
+            >
+              The Dave Ryan Show
+            </h1>
+          </a>
+          <a
+            class="link"
+            href="/podcast/1286770630"
+          >
+            <p
+              class="podcast-details__aside__card__titles_content p-italic"
+            >
+              by 
+              101.3 KDWB
+            </p>
+          </a>
+        </div>
+        <hr />
+        <div
+          class="podcast-details__aside__card__description"
+        >
+          <h2
+            class="podcast-details__aside__card__description__h2"
+          >
+            Description:
+          </h2>
+          <p
+            class="podcast-details__aside__card__description__p p-italic"
+          >
+            Norah Jones is a multi-GRAMMY winning singer and pianist who loves playing music with people, so she started her own podcast to do just that. Each episode, she sits down with a different guest for impromptu musical collaborations and candid conversation. Her guests come from all walks of life and every musical style and you never know where the songs will take them. So, come hang out in the studio. Norah Jones is Playing Along!
+          </p>
+        </div>
+      </div>
+    </aside>
+    <div
+      class="podcast-details__episodes"
+    >
+      <div
+        class="podcast-details__episodes__title__container"
+      >
+        <h2
+          class="podcast-details__episodes__title__container__h2"
+        >
+          Episodes: 
+          1
+        </h2>
+      </div>
+      <div
+        class="card_container table-card"
+      >
+        <table
+          class="podcast-details__episodes__card_container__table"
+        >
+          <thead>
+            <tr>
+              <th
+                class="table__episode__title"
+              >
+                Title
+              </th>
+              <th
+                class="table__episode__title"
+              >
+                Date
+              </th>
+              <th
+                class="table__episode__time"
+              >
+                Duration
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="table__row"
+              data-testid="episode"
+              style="background-color: white;"
+            >
+              <td
+                class="table__episode__title"
+              >
+                Tarriona "Tank" Ball
+              </td>
+              <td
+                class="table__episode__title"
+              >
+                10/11/2022
+              </td>
+              <td
+                class="table__episode__time"
+              >
+                01:06:27
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;

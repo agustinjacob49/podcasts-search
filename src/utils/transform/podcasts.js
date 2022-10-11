@@ -63,7 +63,7 @@ export const transformPodcastData = (podcastData, rss) => {
     let { podcastData : { artworkUrl600 : img} } = podcastData;
     img = img.replace("600x600", "250x250");
 
-    const episodes = rss.item.map(transformEpisode);
+    const episodes =  (Array.isArray(rss.item) && rss.item.map(transformEpisode)) || [rss.item].map(transformEpisode)
     
     let details = (rss['description'] && rss['description']['_text']) || (rss['description'] && rss['description']['_cdata'])||(rss['itunes:summary'] && rss['itunes:summary']['_text']) || "";
 

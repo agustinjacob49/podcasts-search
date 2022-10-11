@@ -41,6 +41,7 @@ exports[`Home view Snapshot testing 1`] = `
               />
             </div>
             <div
+              data-testid="img"
               style="display: none;"
             >
               <img
@@ -86,6 +87,7 @@ exports[`Home view Snapshot testing 1`] = `
               />
             </div>
             <div
+              data-testid="img"
               style="display: none;"
             >
               <img
@@ -131,6 +133,7 @@ exports[`Home view Snapshot testing 1`] = `
               />
             </div>
             <div
+              data-testid="img"
               style="display: none;"
             >
               <img
