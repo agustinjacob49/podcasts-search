@@ -1,11 +1,9 @@
-import { transformPodcasts } from "../transform/podcasts";
+import { transformPodcastData, transformPodcasts } from "../transform/podcasts";
 import { saveLocalStoragePodcastsData, getLocalStoragePodcastsData, saveLocalStoragePodcastData, searchLocalStoragePodcastsDetailData } from "../localStorage/podcast";
 import XmlJs from 'xml-js';
 
-
 export const fetchPodcasts = () => {
     try {
-    
         const { isNotValid, storagedPodcasts} = getLocalStoragePodcastsData();
     
         if (isNotValid) {
@@ -17,6 +15,9 @@ export const fetchPodcasts = () => {
 
                 saveLocalStoragePodcastsData(podcasts);
                 return podcasts;
+            }).catch( (err) => {
+                console.log(`Error fetching podcast list - original msg:${err}`);
+                return new Promise().reject(err);
             });
         } else {
             return new Promise((resolve, reject) => {
@@ -27,87 +28,52 @@ export const fetchPodcasts = () => {
         console.log(`Error fetching podcast list - original msg:${err}`);
         return new Promise().reject(err);
     }
-
 };
 
 export const fetchPodcast = async (podcastId) => {
 
-   const cachedData = searchLocalStoragePodcastsDetailData(podcastId);
+    try {
 
-   const { isInvalid } = cachedData
+        const cachedData = searchLocalStoragePodcastsDetailData(podcastId);
 
-   if (isInvalid) {
-    const corsProxy = 'https://api.allorigins.win/get?url=';
+        const { isInvalid } = cachedData
 
-    const responseItunes = await fetch(`${corsProxy}${encodeURIComponent(`https://itunes.apple.com/lookup?id=${podcastId}`)}`).then((response) => response.json());
+        if (isInvalid) {
+            const corsProxy = 'https://api.allorigins.win/get?url=';
 
-    const { results } = JSON.parse(responseItunes.contents);
-    const [ podcast ] = results;
+            const responseItunes = await fetch(`${corsProxy}${encodeURIComponent(`https://itunes.apple.com/lookup?id=${podcastId}`)}`).then((response) => response.json());
 
-    const { feedUrl } = podcast;
+            const { results } = JSON.parse(responseItunes.contents);
+            const [ podcast ] = results;
 
+            const { feedUrl } = podcast;
+            
+            const responseRSS = await fetch(`${corsProxy}${feedUrl}`).then((response) => response.json());
 
-    const responseRSS = await fetch(`${corsProxy}${feedUrl}`).then((response) => response.json())
-    const { contents } = responseRSS;
+            const { contents } = responseRSS;
     
-    const parsedRss =  XmlJs.xml2js(contents, { compact: true });
-    const { rss : { channel: rss } } = parsedRss
-
-    const podcastData = {
-        podcastData: podcast,
-        rss,
-    }
-
-    const {podcastData : { artistName : author, collectionName: title, collectionId: id }} = podcastData;
-    let { podcastData : { artworkUrl600 : img} } = podcastData;
-    img = img.replace("600x600", "250x250");
-
-    const episodes = rss.item.map( (i) => {
-        const episodeTitle = i["itunes:title"] || i["title"];
-        const date = i["pubDate"] && new Date(i["pubDate"]).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-        });
-
-        const durationRaw = i["itunes:duration"] || 0 ;
-        const src = i['enclosure']?
-        i['enclosure']['url'] :
-        (i['media:content']?
-        i['media:content']['url'] :
-          null
-        );
+            const parsedRss =  XmlJs.xml2js(contents, { compact: true });
+            const { rss : { channel: rss } } = parsedRss;
 
 
-        let durationParsed = new Date(0);
-        durationParsed.setSeconds(durationRaw);
-        durationParsed = durationParsed.toISOString().substring(11, 19);
+            const podcastData = {
+                podcastData: podcast,
+                rss,
+            }
 
-        return {
-            episodeTitle,
-            date,
-            duration: durationParsed,
-            src
+            const podcastViewData = transformPodcastData(podcastData, rss);
+
+            saveLocalStoragePodcastData(podcastViewData);
+
+            return Promise.resolve(podcastViewData);
+        } else {
+                return Promise.resolve(cachedData);
         }
-    })
-    
-
-    const details = rss['description'] || rss["itunes:summary"];
-
-    const podcastViewData = {
-        id,
-        author,
-        title,
-        details,
-        img,
-        episodes
-    };
-
-    saveLocalStoragePodcastData(podcastViewData);
-
-    return Promise.resolve(podcastViewData);
-   } else {
-        return Promise.resolve(cachedData);
-   }
+    } catch (err) {
+        console.log(`Error fetchPodcast - original msg:${err}`);
+        return new Promise().reject(err);
+    }
 }
+
+
 

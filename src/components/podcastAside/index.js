@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import parse from 'html-react-parser';
 import './podcastAside.scss';
 import Image from '../img';
@@ -27,4 +27,4 @@ const PodcastAside = ({ author, title, details, id, img }) => {
 };
 
 
-export default PodcastAside;
+export default memo(PodcastAside);

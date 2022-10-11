@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 const showLoader = (className) => {
     return (
@@ -23,4 +23,4 @@ const Image = ({ src, className }) => {
     </>;
 };
 
-export default Image;
+export default memo(Image);
