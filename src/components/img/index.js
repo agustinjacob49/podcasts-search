@@ -1,4 +1,5 @@
 import React, { memo, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const showLoader = (className) => {
     return (
@@ -22,6 +23,11 @@ const Image = ({ src, className }) => {
           /> 
       </div>
     </>;
+};
+
+Image.propTypes = {
+  src: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default memo(Image);
