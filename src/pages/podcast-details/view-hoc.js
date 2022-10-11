@@ -14,6 +14,8 @@ const getPodcastDetailsHOC = View => {
             fetchPodcast(podcastId).then((podcast) => {
                 setPodcast({ podcast }); 
                 loadingCallback(false);
+              }).catch( (err) => {
+                console.log(`Something went wrong at podcastDetailsHOC - ${err}`);
               });
           }, []);
 

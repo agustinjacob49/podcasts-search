@@ -65,7 +65,7 @@ export const transformPodcastData = (podcastData, rss) => {
 
     const episodes = rss.item.map(transformEpisode);
     
-    let details = (rss['description'] && rss['description']['_text']) ||(rss['itunes:summary'] && rss['itunes:summary']['_text']) || "";
+    let details = (rss['description'] && rss['description']['_text']) || (rss['description'] && rss['description']['_cdata'])||(rss['itunes:summary'] && rss['itunes:summary']['_text']) || "";
 
     return {
         id,

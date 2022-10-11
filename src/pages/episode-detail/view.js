@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { memo } from 'react';
+import PodcastAside from '../../components/podcastAside';
 import getEpisodeDetailsHOC from './view-hoc';
+import Episode from '../../components/episode';
 
-const View = () => {
-
+const View = ({ podcast, episode }) => {
     return (
-        <div>
-            <h1>Episode details</h1>
+        <div className="podcast-details">
+            <PodcastAside  {...podcast} />
+            <Episode {...episode}/>
         </div>
     );
 };
 
-export default getEpisodeDetailsHOC(View);
+export default getEpisodeDetailsHOC(memo(View));

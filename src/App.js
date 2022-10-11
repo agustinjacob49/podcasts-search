@@ -22,7 +22,7 @@ const App = () => {
               <Route path="podcast/:podcastId" element={<PodcastDetails loadingCallback={setIsLoading}/>} />
               <Route
                 path="podcast/:podcastId/episode/:episodeId"
-                element={<EpisodeDetails />}
+                element={<EpisodeDetails  loadingCallback={setIsLoading}/>}
               />
             </Routes>
           </Router>

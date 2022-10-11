@@ -10,6 +10,8 @@ const getHomeHOC = View => {
             fetchPodcasts().then((podcasts) => {
                 setPodcastsData({ podcasts }); 
                 loadingCallback(false);
+              }).catch( (err) => {
+                console.log(`Something went wrong at HomeHOC - ${err}`);
               });
           }, []);
 
