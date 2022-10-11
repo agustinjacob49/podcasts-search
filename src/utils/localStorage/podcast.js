@@ -91,6 +91,12 @@ export const saveLocalStoragePodcastData = (podcast) => {
         const storagedPodcasts = localStorage.getItem(KEY_STORAGE_PODCASTS_DETAIL);
 
         const parsedData = JSON.parse(storagedPodcasts);
+
+        if (parsedData) {
+
+        } else { 
+            
+        }
         const podcasts = parsedData && parsedData[0];
 
         const { id } = podcast;

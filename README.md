@@ -5,6 +5,32 @@ This project uses React - Scss - Webpack - Jest - Express - Babel
 For routing we use react-router-dom .\
 And for parsing xml-js
 
+## Lighthouse score
+
+
+# Features
+
+## Home
+
+In this page you can see the podcasts obtained from the iTunes API
+You can use the filter input to make a better search. 
+
+## Podcast details
+
+In this page you can see the podcast detail with a table of the episodes
+
+If you click on an episode, you will go to the episode details page
+If you click on the navbar logo, you will go back to the home page.
+
+## Episode details
+
+In this page you can see the episode detail with player
+
+If you click on the author of the podcast, on the title or on the cover, you will go back to the podcast details page
+If you click on the navbar logo, you will go back to the home page.
+
+
+# How to run it ?
 
 ## How to test in prod
 
@@ -27,20 +53,34 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 You need to run `npm run buld` after.
 
-### Testing `npm test`
+## Build `npm run build`
 
-Launches the test runner .\
-
-### Build `npm run build`
+Size gzipped
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
 
+# Testing
 
-## Testing coverage
+## Coverage
 
-## How to contribute
 
-Just create a PR a send me an email to jacobsen816@gmail.com
+### Testing `npm run test`
+
+Launches the test runner .\
+
+### Test coverage `npm run test:coverage`
+
+Launches the test runner collecting coverage .\
+
+### Test coverage `npm run test:update-mocks`
+
+Launches the test runner collecting coverage and updating snapshots.\
+
+
+
+# How to contribute
+
+Just create a PR and send me an email to jacobsen816@gmail.com

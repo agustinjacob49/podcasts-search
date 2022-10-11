@@ -14,7 +14,7 @@ const Image = ({ src, className }) => {
       <div style={{display: loading ? "block" : "none"}}>
          {showLoader(className)}
       </div>
-      <div style={{display: loading ? "none" : "block"}}>
+      <div style={{display: loading ? "none" : "block"}}  data-testid="img">
           <img 
             alt="cover"
             className={className}

@@ -14,7 +14,7 @@ const getEpisodeDetailsHOC = View => {
             loadingCallback(true);
             fetchPodcast(podcastId).then((podcast) => {
                 const { episodes } = podcast;
-                const episode = episodes[episodeId] || null;
+                const episode = (episodeId && episodes[episodeId]) || (episodes && episodes[0]) || ({ description : '' });
                 const { id, author, title, details, img } = podcast || {};
                 setEpisode({ ...episode }); 
                 setPodcast({ id, author, title, details, img  });
