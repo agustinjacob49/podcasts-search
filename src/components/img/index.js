@@ -18,7 +18,8 @@ const Image = ({ src, className }) => {
             alt="cover"
             className={className}
             src={src}
-            onLoad={() => setLoading(false)} />
+            onLoad={() => setLoading(false)}
+          /> 
       </div>
     </>;
 };
