@@ -1,6 +1,7 @@
 import { transformPodcasts } from "../transform/podcasts";
 import { saveLocalStoragePodcastsData, getLocalStoragePodcastsData, saveLocalStoragePodcastData, searchLocalStoragePodcastsDetailData } from "../localStorage/podcast";
-import { XMLParser } from 'fast-xml-parser';
+import XmlJs from 'xml-js';
+
 
 export const fetchPodcasts = () => {
     try {
@@ -46,11 +47,11 @@ export const fetchPodcast = async (podcastId) => {
     const { feedUrl } = podcast;
 
 
-    const parser = new XMLParser();
+    const responseRSS = await fetch(`${corsProxy}${feedUrl}`).then((response) => response.json())
+    const { contents } = responseRSS;
     
-    const responseRSS = await fetch(`${corsProxy}${feedUrl}`).then((response) => response.text()).then((response) => parser.parse(response));
-
-    const { rss : { channel: rss } } = responseRSS
+    const parsedRss =  XmlJs.xml2js(contents, { compact: true });
+    const { rss : { channel: rss } } = parsedRss
 
     const podcastData = {
         podcastData: podcast,
