@@ -1,5 +1,6 @@
-import React, { memo } from "react";
 import "./player.scss";
+import React, { memo } from "react";
+import PropTypes from 'prop-types';
 
 const Player = ({ src }) => {
   return (
@@ -10,6 +11,10 @@ const Player = ({ src }) => {
       </audio>
     </figure>
   );
+};
+
+Player.propTypes = {
+  src: PropTypes.string,
 };
 
 export default memo(Player);

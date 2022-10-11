@@ -1,6 +1,7 @@
 import "./episode.scss";
 import React, { memo } from "react";
 import parse from 'html-react-parser';
+import PropTypes from 'prop-types';
 import Player from "../player";
 
 const Episode = ({ src, description, episodeTitle }) => {
@@ -14,6 +15,12 @@ const Episode = ({ src, description, episodeTitle }) => {
       </div>
   </div>
   );
+};
+
+Episode.propTypes = {
+  episodeTitle: PropTypes.string,
+  description: PropTypes.string,
+  src: PropTypes.string,
 };
 
 export default memo(Episode);

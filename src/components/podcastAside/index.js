@@ -1,8 +1,10 @@
+import './podcastAside.scss';
 import React, { memo } from 'react';
 import parse from 'html-react-parser';
-import './podcastAside.scss';
-import Image from '../img';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Image from '../img';
+
 
 const PodcastAside = ({ author, title, details, id, img }) => {
 
@@ -27,5 +29,12 @@ const PodcastAside = ({ author, title, details, id, img }) => {
     );
 };
 
-
+PodcastAside.propTypes = {
+    author: PropTypes.string,
+    title: PropTypes.string,
+    details: PropTypes.string,
+    id: PropTypes.number,
+    img: PropTypes.string,
+};
+  
 export default memo(PodcastAside);

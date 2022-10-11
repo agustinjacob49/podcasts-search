@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 import "./table.scss";
 
 const generateEpisodes = (episodes, handleOnClick) => {
@@ -46,6 +47,11 @@ const Table = ({ episodes, podcastId }) => {
         </tbody>
         </table>
     );
+};
+
+Table.propTypes = {
+  episodes: PropTypes.array,
+  podcastId: PropTypes.number,
 };
 
 export default Table;
