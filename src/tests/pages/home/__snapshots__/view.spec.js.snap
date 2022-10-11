@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home view Snapshot testing 1`] = `
+<div>
+  <div>
+    <section
+      class="filters"
+    >
+      <input
+        class="filters__input"
+        data-testid="input-filter"
+        placeholder="Filter podcasts..."
+        value=""
+      />
+      <button
+        class="filters__button"
+        data-testid="button-filter"
+      >
+        100
+      </button>
+    </section>
+    <section
+      class="grid"
+    >
+      <div
+        class="grid__block"
+      >
+        <a
+          class="link"
+          href="/podcast/1001659715"
+        >
+          <div
+            class="grid__item"
+            data-testid="item-card"
+          >
+            <div
+              style="display: block;"
+            >
+              <div
+                class="grid__item__img skeleton"
+              />
+            </div>
+            <div
+              data-testid="img"
+              style="display: none;"
+            >
+              <img
+                alt="cover"
+                class="grid__item__img"
+                src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/55/3e/bc/553ebc1f-75e1-6c3e-c9a3-de3bfc0a11e0/mza_11110635484606225985.png/170x170bb.png"
+              />
+            </div>
+            <div
+              class="grid__item__card"
+            >
+              <div
+                class="grid__item__card__info"
+              >
+                <p
+                  class="grid__item__card__title"
+                >
+                  No Jumper - No Jumper
+                </p>
+                <p
+                  class="grid__item__card__subtitle"
+                >
+                  Author: 
+                  No Jumper
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          class="link"
+          href="/podcast/1001659715"
+        >
+          <div
+            class="grid__item"
+            data-testid="item-card"
+          >
+            <div
+              style="display: block;"
+            >
+              <div
+                class="grid__item__img skeleton"
+              />
+            </div>
+            <div
+              data-testid="img"
+              style="display: none;"
+            >
+              <img
+                alt="cover"
+                class="grid__item__img"
+                src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/55/3e/bc/553ebc1f-75e1-6c3e-c9a3-de3bfc0a11e0/mza_11110635484606225985.png/170x170bb.png"
+              />
+            </div>
+            <div
+              class="grid__item__card"
+            >
+              <div
+                class="grid__item__card__info"
+              >
+                <p
+                  class="grid__item__card__title"
+                >
+                  2DO PODCAST
+                </p>
+                <p
+                  class="grid__item__card__subtitle"
+                >
+                  Author: 
+                  2DO PODCAST
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <a
+          class="link"
+          href="/podcast/1001659715"
+        >
+          <div
+            class="grid__item"
+            data-testid="item-card"
+          >
+            <div
+              style="display: block;"
+            >
+              <div
+                class="grid__item__img skeleton"
+              />
+            </div>
+            <div
+              data-testid="img"
+              style="display: none;"
+            >
+              <img
+                alt="cover"
+                class="grid__item__img"
+                src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts112/v4/55/3e/bc/553ebc1f-75e1-6c3e-c9a3-de3bfc0a11e0/mza_11110635484606225985.png/170x170bb.png"
+              />
+            </div>
+            <div
+              class="grid__item__card"
+            >
+              <div
+                class="grid__item__card__info"
+              >
+                <p
+                  class="grid__item__card__title"
+                >
+                  2DO PODCAST
+                </p>
+                <p
+                  class="grid__item__card__subtitle"
+                >
+                  Author: 
+                  2DO PODCAST
+                </p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>
+`;

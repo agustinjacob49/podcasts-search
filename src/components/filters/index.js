@@ -5,8 +5,8 @@ const Filters = ({inputValue, handleOnChangeFilter, handleOnClickFilterButton}) 
 
     return (
         <section className='filters'>
-            <input className="filters__input" value={inputValue} placeholder="Filter podcasts..."  onChange={handleOnChangeFilter}/>
-            <button className='filters__button' onClickFilterButton={handleOnClickFilterButton}>
+            <input data-testid="input-filter" className="filters__input" value={inputValue} placeholder="Filter podcasts..."  onChange={handleOnChangeFilter}/>
+            <button data-testid="button-filter" className='filters__button' onClick={handleOnClickFilterButton}>
                 100
             </button>
         </section>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Player = ({ src }) => {
   return (
-    <figure className="figure__player">
+    <figure className="figure__player" data-testid="player">
       <figcaption></figcaption>
       <audio className="figure__player__audio" controls src={src}>
         <a href={src}>Download audio</a>
