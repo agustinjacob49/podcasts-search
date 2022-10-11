@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home view Snapshot testing 1`] = `
+<div>
+  <div>
+    <section
+      class="filters"
+    >
+      <input
+        class="filters__input"
+        placeholder="Filter podcasts..."
+        value=""
+      />
+      <button
+        class="filters__button"
+      >
+        100
+      </button>
+    </section>
+  </div>
+</div>
+`;

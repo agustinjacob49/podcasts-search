@@ -6,6 +6,30 @@ For routing we use react-router-dom .\
 And for parsing xml-js
 
 
+# Features
+
+## Home
+
+In this page you can see the podcasts obtained from the iTunes API
+You can use the filter input to make a better search. 
+
+## Podcast details
+
+In this page you can see the podcast detail with a table of the episodes
+
+If you click on an episode, you will go to the episode details page
+If you click on the navbar logo, you will go back to the home page.
+
+## Episode details
+
+In this page you can see the episode detail with player
+
+If you click on the author of the podcast, on the title or on the cover, you will go back to the podcast details page
+If you click on the navbar logo, you will go back to the home page.
+
+
+# How to run it ?
+
 ## How to test in prod
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -39,8 +63,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 
 
-## Testing coverage
+# Testing
 
-## How to contribute
+# How to contribute
 
-Just create a PR a send me an email to jacobsen816@gmail.com
+Just create a PR and send me an email to jacobsen816@gmail.com
