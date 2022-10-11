@@ -112,4 +112,10 @@ Launches the test runner collecting coverage and updating snapshots.\
 
 # How to contribute
 
+## Branching model
+
+Gitflow.
+
+## Especial note
+
 Just create a PR and send me an email to jacobsen816@gmail.com
