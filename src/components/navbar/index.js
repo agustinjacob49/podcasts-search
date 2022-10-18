@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import LoaderContext from '../../utils/context/loaderContext';
+import { LoaderContext } from '../../utils/context/loaderContext';
 import Loader from '../loader';
 
 const Navbar = () => {
 
-    const isLoading = useContext(LoaderContext);
+    const  { isLoading } = useContext(LoaderContext);
 
     return (
         <header>
