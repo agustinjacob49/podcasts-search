@@ -1,5 +1,9 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-const LoaderContext = createContext();
+export const LoaderContext = createContext({ isLoading : true, setIsLoading: () => {} });
 
-export default LoaderContext;
+export const LoaderContextProvider = ({ children }) => {
+    const [isLoading, setIsLoading] = useState(true);
+
+    return (<LoaderContext.Provider value={{ isLoading, setIsLoading }}>{children}</LoaderContext.Provider>);
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { fetchPodcasts } from '../../utils/api/fetch';
-import LoaderContext from '../../utils/context/loaderContext';
+import { LoaderContext } from '../../utils/context/loaderContext';
 
 const getHomeHOC = View => {
     

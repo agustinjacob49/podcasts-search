@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchPodcast } from '../../utils/api/fetch';
-import LoaderContext from '../../utils/context/loaderContext';
+import { LoaderContext } from '../../utils/context/loaderContext';
 
 const getPodcastDetailsHOC = View => {
     
