@@ -1,23 +1,25 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchPodcast } from '../../utils/api/fetch';
+import { LoaderContext } from '../../utils/context/loaderContext';
 
 const getPodcastDetailsHOC = View => {
     
-    const podcastDetailsHOC = ({loadingCallback}) => {
+    const podcastDetailsHOC = () => {
         const [podcast, setPodcast] = useState(null);
         const { podcastId } = useParams();
+        const { setIsLoading } = useContext(LoaderContext);
 
         useEffect(() => {
-            loadingCallback(true);
+            setIsLoading(true);
             fetchPodcast(podcastId).then((podcast) => {
                 setPodcast({ podcast }); 
-                loadingCallback(false);
+                setIsLoading(false);
               }).catch( (err) => {
                 console.log(`Something went wrong at podcastDetailsHOC - ${err}`);
               });
-          }, []);
+          }, [podcastId, setIsLoading]);
 
         const props = {
             ...podcast
