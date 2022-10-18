@@ -6,10 +6,10 @@ import Podcasts from '../../components/grid';
 const View = ({ podcasts, inputValue, handleOnChangeFilter, handleOnClickFilterButton}) => {
 
     return (
-        <div>
+        <React.Fragment>
             <Filters value={inputValue} handleOnChangeFilter={handleOnChangeFilter} handleOnClickFilterButton={handleOnClickFilterButton}/>
             { podcasts && <Podcasts podcasts={podcasts}/> }
-        </div>
+        </React.Fragment>
     );
 };
 

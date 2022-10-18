@@ -24,7 +24,7 @@ const getHomeHOC = View => {
               }).catch( (err) => {
                 console.log(`Something went wrong at HomeHOC - ${err}`);
               });
-          }, []);
+          }, [setIsLoading]);
 
         const filteredList = podcasts && podcasts.filter((podcast) => {
             if (inputValue === '') return podcast;

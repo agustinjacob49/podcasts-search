@@ -6,7 +6,7 @@ import { LoaderContext } from '../../utils/context/loaderContext';
 
 const getPodcastDetailsHOC = View => {
     
-    const podcastDetailsHOC = ({loadingCallback}) => {
+    const podcastDetailsHOC = () => {
         const [podcast, setPodcast] = useState(null);
         const { podcastId } = useParams();
         const { setIsLoading } = useContext(LoaderContext);
@@ -19,7 +19,7 @@ const getPodcastDetailsHOC = View => {
               }).catch( (err) => {
                 console.log(`Something went wrong at podcastDetailsHOC - ${err}`);
               });
-          }, []);
+          }, [podcastId, setIsLoading]);
 
         const props = {
             ...podcast
