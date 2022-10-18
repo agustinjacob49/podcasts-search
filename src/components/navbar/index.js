@@ -5,7 +5,7 @@ import Loader from '../loader';
 
 const Navbar = () => {
 
-    const isLoading = useContext(LoaderContext);
+    const  { isLoading } = useContext(LoaderContext);
 
     return (
         <header>

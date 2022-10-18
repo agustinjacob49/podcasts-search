@@ -1,6 +1,6 @@
 import "./App.scss";
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Home from "./pages/home/view";
@@ -14,15 +14,15 @@ const App = () => {
 
   return (
     <div className="App">
-        <LoaderContext.Provider value={isLoading}>
+        <LoaderContext.Provider value={{ isLoading, setIsLoading }}>
           <Router>
             <Navbar />
             <Routes>
-              <Route path="/" element={<Home loadingCallback={setIsLoading}/>} />
-              <Route path="podcast/:podcastId" element={<PodcastDetails loadingCallback={setIsLoading}/>} />
+              <Route path="/" element={<Home />} />
+              <Route path="podcast/:podcastId" element={<PodcastDetails />} />
               <Route
                 path="podcast/:podcastId/episode/:episodeId"
-                element={<EpisodeDetails  loadingCallback={setIsLoading}/>}
+                element={<EpisodeDetails />}
               />
             </Routes>
           </Router>
