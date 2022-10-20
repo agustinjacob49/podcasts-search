@@ -64,6 +64,7 @@ If you click on the navbar logo, you will go back to the home page.
 ## How to test in prod
 
 Open [this link](http://ec2-18-231-57-104.sa-east-1.compute.amazonaws.com:3000/) to view it in your browser.
+If its not working, maybe the instance in EC2 is off so please send me an email to jacobsen816@gmail.com to ask for a demo. 
 
 ## How to run locally
 
